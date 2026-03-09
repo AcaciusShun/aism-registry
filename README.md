@@ -19,14 +19,22 @@ The initial registry is generated from:
 
 - upstream repo: `https://github.com/ComposioHQ/awesome-claude-skills.git`
 - upstream ref: `master`
-- upstream root: `composio-skills/`
+- upstream root-level skill directories
+- upstream collection roots: `composio-skills/`
 
-Each direct child directory under `composio-skills/` that contains `SKILL.md` is
-treated as one installable skill entry.
+The generator currently scans:
+
+- top-level directories that contain `SKILL.md`
+- direct children under `composio-skills/` that contain `SKILL.md`
+
+This lets the registry include both standalone skills at repository root and
+the larger bundled skill collection under `composio-skills/`.
 
 ## Curation Rules
 
 - one registry entry per skill directory
+- root-level skill folders are indexed with paths like `theme-factory`
+- bundled skills are indexed with paths like `composio-skills/ably-automation`
 - `slug` is normalized from the directory name
 - `name` is the display name from `SKILL.md` frontmatter when present
 - `version` falls back to `0.1.0` when the source skill omits it
@@ -73,10 +81,22 @@ Useful overrides:
 ```bash
 python3 scripts/generate_composio_index.py --output /tmp/index.json
 python3 scripts/generate_composio_index.py --repo-url https://github.com/ComposioHQ/awesome-claude-skills.git --ref master
+python3 scripts/generate_composio_index.py --collection-root composio-skills
 ```
 
 The script performs a temporary shallow clone of the upstream repository and
 rewrites `index.json` deterministically.
+
+## Automatic Refresh
+
+This repository includes a scheduled GitHub Actions workflow that regenerates
+`index.json` and commits it back to `main` when upstream content changes.
+
+Current triggers:
+
+- daily scheduled refresh
+- manual `workflow_dispatch`
+- pushes that change the generator or workflow itself
 
 ## Consume From `aism`
 

@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Generate an aism-compatible registry index from the Composio skills monorepo."""
+"""Generate an aism-compatible registry index from the Composio skills repository."""
 
 from __future__ import annotations
 
@@ -14,7 +14,7 @@ from pathlib import Path
 
 DEFAULT_REPO_URL = "https://github.com/ComposioHQ/awesome-claude-skills.git"
 DEFAULT_REF = "master"
-DEFAULT_SOURCE_ROOT = "composio-skills"
+DEFAULT_COLLECTION_ROOTS = ["composio-skills"]
 DEFAULT_SOURCE = "composiohq"
 DEFAULT_TARGETS = ["claude"]
 DEFAULT_VERSION = "0.1.0"
@@ -54,9 +54,11 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--repo-url", default=DEFAULT_REPO_URL, help="Upstream git repository URL.")
     parser.add_argument("--ref", default=DEFAULT_REF, help="Git branch, tag, or ref to clone.")
     parser.add_argument(
-        "--source-root",
-        default=DEFAULT_SOURCE_ROOT,
-        help="Relative directory inside the upstream repo that contains skill folders.",
+        "--collection-root",
+        action="append",
+        dest="collection_roots",
+        default=None,
+        help="Relative directory inside the upstream repo whose direct children are skill folders. Repeatable.",
     )
     parser.add_argument(
         "--source",
@@ -80,6 +82,7 @@ def main() -> int:
     args = parse_args()
     output_path = Path(args.output).expanduser().resolve()
     targets = normalize_targets(args.targets)
+    collection_roots = normalize_collection_roots(args.collection_roots)
     if not targets:
         print("error: at least one target is required", file=sys.stderr)
         return 1
@@ -88,17 +91,9 @@ def main() -> int:
         repo_dir = Path(checkout_root) / "source"
         clone_repo(args.repo_url, args.ref, repo_dir)
 
-        source_root = repo_dir / args.source_root
-        if not source_root.is_dir():
-            print(
-                f"error: source root {args.source_root!r} not found in cloned repository",
-                file=sys.stderr,
-            )
-            return 1
-
         entries, stats = collect_entries(
-            source_root=source_root,
-            source_root_rel=args.source_root,
+            repo_dir=repo_dir,
+            collection_roots=collection_roots,
             repo_url=args.repo_url,
             ref=args.ref,
             registry_source=args.source,
@@ -113,10 +108,11 @@ def main() -> int:
     output_path.write_text(json.dumps(payload, indent=2, ensure_ascii=True) + "\n", encoding="utf-8")
 
     print(
-        "generated {count} skills to {output} (scanned={scanned}, hidden={hidden}, missing_skill_md={missing}, deduped={deduped})".format(
+        "generated {count} skills to {output} (root_scanned={root_scanned}, collections_scanned={collection_scanned}, hidden={hidden}, missing_skill_md={missing}, deduped={deduped})".format(
             count=len(payload["skills"]),
             output=output_path,
-            scanned=stats["scanned"],
+            root_scanned=stats["root_scanned"],
+            collection_scanned=stats["collection_scanned"],
             hidden=stats["hidden"],
             missing=stats["missing_skill_md"],
             deduped=stats["deduped"],
@@ -131,8 +127,8 @@ def clone_repo(repo_url: str, ref: str, destination: Path) -> None:
 
 
 def collect_entries(
-    source_root: Path,
-    source_root_rel: str,
+    repo_dir: Path,
+    collection_roots: list[str],
     repo_url: str,
     ref: str,
     registry_source: str,
@@ -140,53 +136,105 @@ def collect_entries(
 ) -> tuple[dict[str, SkillEntry], dict[str, int]]:
     entries: dict[str, SkillEntry] = {}
     stats = {
-        "scanned": 0,
+        "root_scanned": 0,
+        "collection_scanned": 0,
         "hidden": 0,
         "missing_skill_md": 0,
         "deduped": 0,
     }
 
-    for skill_dir in sorted(source_root.iterdir(), key=lambda item: item.name.lower()):
+    excluded_root_dirs = {Path(root).parts[0] for root in collection_roots if root}
+
+    for skill_dir in sorted(repo_dir.iterdir(), key=lambda item: item.name.lower()):
         if not skill_dir.is_dir():
             continue
-
-        stats["scanned"] += 1
-        if skill_dir.name.startswith("."):
-            stats["hidden"] += 1
+        if skill_dir.name in excluded_root_dirs:
             continue
 
-        skill_md = skill_dir / "SKILL.md"
-        if not skill_md.is_file():
-            stats["missing_skill_md"] += 1
-            continue
-
-        entry = build_entry(
+        stats["root_scanned"] += 1
+        ingest_directory(
+            entries=entries,
+            stats=stats,
             skill_dir=skill_dir,
-            source_root_rel=source_root_rel,
+            relative_path=skill_dir.name,
             repo_url=repo_url,
             ref=ref,
             registry_source=registry_source,
             targets=targets,
         )
-        if entry is None:
+
+    for collection_root in collection_roots:
+        source_root = repo_dir / collection_root
+        if not source_root.is_dir():
+            print(
+                f"warning: collection root {collection_root!r} not found in cloned repository",
+                file=sys.stderr,
+            )
             continue
 
-        current = entries.get(entry.slug)
-        if current is None:
-            entries[entry.slug] = entry
-            continue
+        for skill_dir in sorted(source_root.iterdir(), key=lambda item: item.name.lower()):
+            if not skill_dir.is_dir():
+                continue
 
-        preferred = prefer_entry(current, entry)
-        if preferred is not current:
-            entries[entry.slug] = preferred
-        stats["deduped"] += 1
+            stats["collection_scanned"] += 1
+            ingest_directory(
+                entries=entries,
+                stats=stats,
+                skill_dir=skill_dir,
+                relative_path=f"{collection_root.strip('/')}/{skill_dir.name}",
+                repo_url=repo_url,
+                ref=ref,
+                registry_source=registry_source,
+                targets=targets,
+            )
 
     return entries, stats
 
 
+def ingest_directory(
+    entries: dict[str, SkillEntry],
+    stats: dict[str, int],
+    skill_dir: Path,
+    relative_path: str,
+    repo_url: str,
+    ref: str,
+    registry_source: str,
+    targets: list[str],
+) -> None:
+    if skill_dir.name.startswith("."):
+        stats["hidden"] += 1
+        return
+
+    skill_md = skill_dir / "SKILL.md"
+    if not skill_md.is_file():
+        stats["missing_skill_md"] += 1
+        return
+
+    entry = build_entry(
+        skill_dir=skill_dir,
+        relative_path=relative_path,
+        repo_url=repo_url,
+        ref=ref,
+        registry_source=registry_source,
+        targets=targets,
+    )
+    if entry is None:
+        return
+
+    current = entries.get(entry.slug)
+    if current is None:
+        entries[entry.slug] = entry
+        return
+
+    preferred = prefer_entry(current, entry)
+    if preferred is not current:
+        entries[entry.slug] = preferred
+    stats["deduped"] += 1
+
+
 def build_entry(
     skill_dir: Path,
-    source_root_rel: str,
+    relative_path: str,
     repo_url: str,
     ref: str,
     registry_source: str,
@@ -209,7 +257,7 @@ def build_entry(
         description=description,
         version=version,
         repo=repo_url,
-        path=f"{source_root_rel.strip('/')}/{skill_dir.name}",
+        path=relative_path.strip("/"),
         ref=ref,
         source=registry_source.strip().lower(),
         targets=targets,
@@ -261,6 +309,19 @@ def normalize_targets(raw: str) -> list[str]:
         seen.add(target)
         targets.append(target)
     return targets
+
+
+def normalize_collection_roots(raw_roots: list[str] | None) -> list[str]:
+    roots = raw_roots or DEFAULT_COLLECTION_ROOTS
+    normalized: list[str] = []
+    seen: set[str] = set()
+    for root in roots:
+        value = root.strip().strip("/")
+        if not value or value in seen:
+            continue
+        seen.add(value)
+        normalized.append(value)
+    return normalized
 
 
 def prefer_entry(current: SkillEntry, candidate: SkillEntry) -> SkillEntry:

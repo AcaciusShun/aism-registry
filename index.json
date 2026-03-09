@@ -794,6 +794,19 @@
       ]
     },
     {
+      "slug": "artifacts-builder",
+      "name": "artifacts-builder",
+      "repo": "https://github.com/ComposioHQ/awesome-claude-skills.git",
+      "path": "artifacts-builder",
+      "ref": "master",
+      "source": "composiohq",
+      "version": "0.1.0",
+      "description": "Suite of tools for creating elaborate, multi-component claude.ai HTML artifacts using modern frontend web technologies (React, Tailwind CSS, shadcn/ui). Use for complex artifacts requiring state management, routing, or shadcn/ui components - not for simple single-file HTML/JSX artifacts.",
+      "targets": [
+        "claude"
+      ]
+    },
+    {
       "slug": "aryn-automation",
       "name": "aryn-automation",
       "repo": "https://github.com/ComposioHQ/awesome-claude-skills.git",
@@ -1509,6 +1522,19 @@
       ]
     },
     {
+      "slug": "brand-guidelines",
+      "name": "brand-guidelines",
+      "repo": "https://github.com/ComposioHQ/awesome-claude-skills.git",
+      "path": "brand-guidelines",
+      "ref": "master",
+      "source": "composiohq",
+      "version": "0.1.0",
+      "description": "Applies Anthropic's official brand colors and typography to any sort of artifact that may benefit from having Anthropic's look-and-feel. Use it when brand colors or style guidelines, visual formatting, or company design standards apply.",
+      "targets": [
+        "claude"
+      ]
+    },
+    {
       "slug": "brandfetch-automation",
       "name": "brandfetch-automation",
       "repo": "https://github.com/ComposioHQ/awesome-claude-skills.git",
@@ -1925,6 +1951,19 @@
       ]
     },
     {
+      "slug": "canvas-design",
+      "name": "canvas-design",
+      "repo": "https://github.com/ComposioHQ/awesome-claude-skills.git",
+      "path": "canvas-design",
+      "ref": "master",
+      "source": "composiohq",
+      "version": "0.1.0",
+      "description": "Create beautiful visual art in .png and .pdf documents using design philosophy. You should use this skill when the user asks to create a poster, piece of art, design, or other static piece. Create original visual designs, never copying existing artists' work to avoid copyright violations.",
+      "targets": [
+        "claude"
+      ]
+    },
+    {
       "slug": "capsule-crm-automation",
       "name": "capsule-crm-automation",
       "repo": "https://github.com/ComposioHQ/awesome-claude-skills.git",
@@ -2037,6 +2076,19 @@
       "source": "composiohq",
       "version": "0.1.0",
       "description": "Automate Certifier tasks via Rube MCP (Composio). Always search tools first for current schemas.",
+      "targets": [
+        "claude"
+      ]
+    },
+    {
+      "slug": "changelog-generator",
+      "name": "changelog-generator",
+      "repo": "https://github.com/ComposioHQ/awesome-claude-skills.git",
+      "path": "changelog-generator",
+      "ref": "master",
+      "source": "composiohq",
+      "version": "0.1.0",
+      "description": "Automatically creates user-facing changelogs from git commits by analyzing commit history, categorizing changes, and transforming technical commits into clear, customer-friendly release notes. Turns hours of manual changelog writing into minutes of automated generation.",
       "targets": [
         "claude"
       ]
@@ -2406,6 +2458,19 @@
       ]
     },
     {
+      "slug": "competitive-ads-extractor",
+      "name": "competitive-ads-extractor",
+      "repo": "https://github.com/ComposioHQ/awesome-claude-skills.git",
+      "path": "competitive-ads-extractor",
+      "ref": "master",
+      "source": "composiohq",
+      "version": "0.1.0",
+      "description": "Extracts and analyzes competitors' ads from ad libraries (Facebook, LinkedIn, etc.) to understand what messaging, problems, and creative approaches are working. Helps inspire and improve your own ad campaigns.",
+      "targets": [
+        "claude"
+      ]
+    },
+    {
       "slug": "composio-automation",
       "name": "composio-automation",
       "repo": "https://github.com/ComposioHQ/awesome-claude-skills.git",
@@ -2432,6 +2497,32 @@
       ]
     },
     {
+      "slug": "connect",
+      "name": "connect",
+      "repo": "https://github.com/ComposioHQ/awesome-claude-skills.git",
+      "path": "connect",
+      "ref": "master",
+      "source": "composiohq",
+      "version": "0.1.0",
+      "description": "Connect Claude to any app. Send emails, create issues, post messages, update databases - take real actions across Gmail, Slack, GitHub, Notion, and 1000+ services.",
+      "targets": [
+        "claude"
+      ]
+    },
+    {
+      "slug": "connect-apps",
+      "name": "connect-apps",
+      "repo": "https://github.com/ComposioHQ/awesome-claude-skills.git",
+      "path": "connect-apps",
+      "ref": "master",
+      "source": "composiohq",
+      "version": "0.1.0",
+      "description": "Connect Claude to external apps like Gmail, Slack, GitHub. Use this skill when the user wants to send emails, create issues, post messages, or take actions in external services.",
+      "targets": [
+        "claude"
+      ]
+    },
+    {
       "slug": "connecteam-automation",
       "name": "connecteam-automation",
       "repo": "https://github.com/ComposioHQ/awesome-claude-skills.git",
@@ -2440,6 +2531,19 @@
       "source": "composiohq",
       "version": "0.1.0",
       "description": "Automate Connecteam tasks via Rube MCP (Composio). Always search tools first for current schemas.",
+      "targets": [
+        "claude"
+      ]
+    },
+    {
+      "slug": "content-research-writer",
+      "name": "content-research-writer",
+      "repo": "https://github.com/ComposioHQ/awesome-claude-skills.git",
+      "path": "content-research-writer",
+      "ref": "master",
+      "source": "composiohq",
+      "version": "0.1.0",
+      "description": "Assists in writing high-quality content by conducting research, adding citations, improving hooks, iterating on outlines, and providing real-time feedback on each section. Transforms your writing process from solo effort to collaborative partnership.",
       "targets": [
         "claude"
       ]
@@ -2861,6 +2965,19 @@
       ]
     },
     {
+      "slug": "developer-growth-analysis",
+      "name": "developer-growth-analysis",
+      "repo": "https://github.com/ComposioHQ/awesome-claude-skills.git",
+      "path": "developer-growth-analysis",
+      "ref": "master",
+      "source": "composiohq",
+      "version": "0.1.0",
+      "description": "Analyzes your recent Claude Code chat history to identify coding patterns, development gaps, and areas for improvement, curates relevant learning resources from HackerNews, and automatically sends a personalized growth report to your Slack DMs.",
+      "targets": [
+        "claude"
+      ]
+    },
+    {
       "slug": "dialmycalls-automation",
       "name": "dialmycalls-automation",
       "repo": "https://github.com/ComposioHQ/awesome-claude-skills.git",
@@ -3116,6 +3233,19 @@
       "source": "composiohq",
       "version": "0.1.0",
       "description": "Automate Docuseal tasks via Rube MCP (Composio). Always search tools first for current schemas.",
+      "targets": [
+        "claude"
+      ]
+    },
+    {
+      "slug": "domain-name-brainstormer",
+      "name": "domain-name-brainstormer",
+      "repo": "https://github.com/ComposioHQ/awesome-claude-skills.git",
+      "path": "domain-name-brainstormer",
+      "ref": "master",
+      "source": "composiohq",
+      "version": "0.1.0",
+      "description": "Generates creative domain name ideas for your project and checks availability across multiple TLDs (.com, .io, .dev, .ai, etc.). Saves hours of brainstorming and manual checking.",
       "targets": [
         "claude"
       ]
@@ -3766,6 +3896,19 @@
       "source": "composiohq",
       "version": "0.1.0",
       "description": "Automate Fidel API tasks via Rube MCP (Composio). Always search tools first for current schemas.",
+      "targets": [
+        "claude"
+      ]
+    },
+    {
+      "slug": "file-organizer",
+      "name": "file-organizer",
+      "repo": "https://github.com/ComposioHQ/awesome-claude-skills.git",
+      "path": "file-organizer",
+      "ref": "master",
+      "source": "composiohq",
+      "version": "0.1.0",
+      "description": "Intelligently organizes your files and folders across your computer by understanding context, finding duplicates, suggesting better structures, and automating cleanup tasks. Reduces cognitive load and keeps your digital workspace tidy without manual effort.",
       "targets": [
         "claude"
       ]
@@ -5201,6 +5344,19 @@
       ]
     },
     {
+      "slug": "image-enhancer",
+      "name": "image-enhancer",
+      "repo": "https://github.com/ComposioHQ/awesome-claude-skills.git",
+      "path": "image-enhancer",
+      "ref": "master",
+      "source": "composiohq",
+      "version": "0.1.0",
+      "description": "Improves the quality of images, especially screenshots, by enhancing resolution, sharpness, and clarity. Perfect for preparing images for presentations, documentation, or social media posts.",
+      "targets": [
+        "claude"
+      ]
+    },
+    {
       "slug": "imagekit-io-automation",
       "name": "imagekit-io-automation",
       "repo": "https://github.com/ComposioHQ/awesome-claude-skills.git",
@@ -5305,6 +5461,19 @@
       ]
     },
     {
+      "slug": "internal-comms",
+      "name": "internal-comms",
+      "repo": "https://github.com/ComposioHQ/awesome-claude-skills.git",
+      "path": "internal-comms",
+      "ref": "master",
+      "source": "composiohq",
+      "version": "0.1.0",
+      "description": "A set of resources to help me write all kinds of internal communications, using the formats that my company likes to use. Claude should use this skill whenever asked to write some sort of internal communications (status reports, leadership updates, 3P updates, company newsletters, FAQs, incident reports, project updates, etc.).",
+      "targets": [
+        "claude"
+      ]
+    },
+    {
       "slug": "interzoid-automation",
       "name": "interzoid-automation",
       "repo": "https://github.com/ComposioHQ/awesome-claude-skills.git",
@@ -5313,6 +5482,19 @@
       "source": "composiohq",
       "version": "0.1.0",
       "description": "Automate Interzoid tasks via Rube MCP (Composio). Always search tools first for current schemas.",
+      "targets": [
+        "claude"
+      ]
+    },
+    {
+      "slug": "invoice-organizer",
+      "name": "invoice-organizer",
+      "repo": "https://github.com/ComposioHQ/awesome-claude-skills.git",
+      "path": "invoice-organizer",
+      "ref": "master",
+      "source": "composiohq",
+      "version": "0.1.0",
+      "description": "Automatically organizes invoices and receipts for tax preparation by reading messy files, extracting key information, renaming them consistently, and sorting them into logical folders. Turns hours of manual bookkeeping into minutes of automated organization.",
       "targets": [
         "claude"
       ]
@@ -5682,6 +5864,19 @@
       ]
     },
     {
+      "slug": "langsmith-fetch",
+      "name": "langsmith-fetch",
+      "repo": "https://github.com/ComposioHQ/awesome-claude-skills.git",
+      "path": "langsmith-fetch",
+      "ref": "master",
+      "source": "composiohq",
+      "version": "0.1.0",
+      "description": "Debug LangChain and LangGraph agents by fetching execution traces from LangSmith Studio. Use when debugging agent behavior, investigating errors, analyzing tool calls, checking memory operations, or examining agent performance. Automatically fetches recent traces and analyzes execution patterns. Requires langsmith-fetch CLI installed.",
+      "targets": [
+        "claude"
+      ]
+    },
+    {
       "slug": "lastpass-automation",
       "name": "lastpass-automation",
       "repo": "https://github.com/ComposioHQ/awesome-claude-skills.git",
@@ -5703,6 +5898,19 @@
       "source": "composiohq",
       "version": "0.1.0",
       "description": "Automate LaunchDarkly feature flag management -- list projects and environments, create and delete trigger workflows, and track code references via the Composio MCP integration.",
+      "targets": [
+        "claude"
+      ]
+    },
+    {
+      "slug": "lead-research-assistant",
+      "name": "lead-research-assistant",
+      "repo": "https://github.com/ComposioHQ/awesome-claude-skills.git",
+      "path": "lead-research-assistant",
+      "ref": "master",
+      "source": "composiohq",
+      "version": "0.1.0",
+      "description": "Identifies high-quality leads for your product or service by analyzing your business, searching for target companies, and providing actionable contact strategies. Perfect for sales, business development, and marketing professionals.",
       "targets": [
         "claude"
       ]
@@ -6158,6 +6366,32 @@
       "source": "composiohq",
       "version": "0.1.0",
       "description": "Automate Mboum tasks via Rube MCP (Composio). Always search tools first for current schemas.",
+      "targets": [
+        "claude"
+      ]
+    },
+    {
+      "slug": "mcp-builder",
+      "name": "mcp-builder",
+      "repo": "https://github.com/ComposioHQ/awesome-claude-skills.git",
+      "path": "mcp-builder",
+      "ref": "master",
+      "source": "composiohq",
+      "version": "0.1.0",
+      "description": "Guide for creating high-quality MCP (Model Context Protocol) servers that enable LLMs to interact with external services through well-designed tools. Use when building MCP servers to integrate external APIs or services, whether in Python (FastMCP) or Node/TypeScript (MCP SDK).",
+      "targets": [
+        "claude"
+      ]
+    },
+    {
+      "slug": "meeting-insights-analyzer",
+      "name": "meeting-insights-analyzer",
+      "repo": "https://github.com/ComposioHQ/awesome-claude-skills.git",
+      "path": "meeting-insights-analyzer",
+      "ref": "master",
+      "source": "composiohq",
+      "version": "0.1.0",
+      "description": "Analyzes meeting transcripts and recordings to uncover behavioral patterns, communication insights, and actionable feedback. Identifies when you avoid conflict, use filler words, dominate conversations, or miss opportunities to listen. Perfect for professionals seeking to improve their communication and leadership skills.",
       "targets": [
         "claude"
       ]
@@ -7710,6 +7944,19 @@
       ]
     },
     {
+      "slug": "raffle-winner-picker",
+      "name": "raffle-winner-picker",
+      "repo": "https://github.com/ComposioHQ/awesome-claude-skills.git",
+      "path": "raffle-winner-picker",
+      "ref": "master",
+      "source": "composiohq",
+      "version": "0.1.0",
+      "description": "Picks random winners from lists, spreadsheets, or Google Sheets for giveaways, raffles, and contests. Ensures fair, unbiased selection with transparency.",
+      "targets": [
+        "claude"
+      ]
+    },
+    {
       "slug": "rafflys-automation",
       "name": "rafflys-automation",
       "repo": "https://github.com/ComposioHQ/awesome-claude-skills.git",
@@ -8789,6 +9036,32 @@
       ]
     },
     {
+      "slug": "skill-creator",
+      "name": "skill-creator",
+      "repo": "https://github.com/ComposioHQ/awesome-claude-skills.git",
+      "path": "skill-creator",
+      "ref": "master",
+      "source": "composiohq",
+      "version": "0.1.0",
+      "description": "Guide for creating effective skills. This skill should be used when users want to create a new skill (or update an existing skill) that extends Claude's capabilities with specialized knowledge, workflows, or tool integrations.",
+      "targets": [
+        "claude"
+      ]
+    },
+    {
+      "slug": "skill-share",
+      "name": "skill-share",
+      "repo": "https://github.com/ComposioHQ/awesome-claude-skills.git",
+      "path": "skill-share",
+      "ref": "master",
+      "source": "composiohq",
+      "version": "0.1.0",
+      "description": "A skill that creates new Claude skills and automatically shares them on Slack using Rube for seamless team collaboration and skill discovery.",
+      "targets": [
+        "claude"
+      ]
+    },
+    {
       "slug": "skyfire-automation",
       "name": "skyfire-automation",
       "repo": "https://github.com/ComposioHQ/awesome-claude-skills.git",
@@ -8797,6 +9070,19 @@
       "source": "composiohq",
       "version": "0.1.0",
       "description": "Automate Skyfire tasks via Rube MCP (Composio). Always search tools first for current schemas.",
+      "targets": [
+        "claude"
+      ]
+    },
+    {
+      "slug": "slack-gif-creator",
+      "name": "slack-gif-creator",
+      "repo": "https://github.com/ComposioHQ/awesome-claude-skills.git",
+      "path": "slack-gif-creator",
+      "ref": "master",
+      "source": "composiohq",
+      "version": "0.1.0",
+      "description": "Toolkit for creating animated GIFs optimized for Slack, with validators for size constraints and composable animation primitives. This skill applies when users request animated GIFs or emoji animations for Slack from descriptions like \"make me a GIF for Slack of X doing Y\".",
       "targets": [
         "claude"
       ]
@@ -9218,6 +9504,19 @@
       ]
     },
     {
+      "slug": "tailored-resume-generator",
+      "name": "tailored-resume-generator",
+      "repo": "https://github.com/ComposioHQ/awesome-claude-skills.git",
+      "path": "tailored-resume-generator",
+      "ref": "master",
+      "source": "composiohq",
+      "version": "0.1.0",
+      "description": "Analyzes job descriptions and generates tailored resumes that highlight relevant experience, skills, and achievements to maximize interview chances",
+      "targets": [
+        "claude"
+      ]
+    },
+    {
       "slug": "talenthr-automation",
       "name": "talenthr-automation",
       "repo": "https://github.com/ComposioHQ/awesome-claude-skills.git",
@@ -9335,6 +9634,19 @@
       ]
     },
     {
+      "slug": "template-skill",
+      "name": "template-skill",
+      "repo": "https://github.com/ComposioHQ/awesome-claude-skills.git",
+      "path": "template-skill",
+      "ref": "master",
+      "source": "composiohq",
+      "version": "0.1.0",
+      "description": "Replace with description of the skill and when Claude should use it.",
+      "targets": [
+        "claude"
+      ]
+    },
+    {
       "slug": "templated-automation",
       "name": "templated-automation",
       "repo": "https://github.com/ComposioHQ/awesome-claude-skills.git",
@@ -9434,6 +9746,19 @@
       "source": "composiohq",
       "version": "0.1.0",
       "description": "Automate The Odds API tasks via Rube MCP (Composio). Always search tools first for current schemas.",
+      "targets": [
+        "claude"
+      ]
+    },
+    {
+      "slug": "theme-factory",
+      "name": "theme-factory",
+      "repo": "https://github.com/ComposioHQ/awesome-claude-skills.git",
+      "path": "theme-factory",
+      "ref": "master",
+      "source": "composiohq",
+      "version": "0.1.0",
+      "description": "Toolkit for styling artifacts with a theme. These artifacts can be slides, docs, reportings, HTML landing pages, etc. There are 10 pre-set themes with colors/fonts that you can apply to any artifact that has been creating, or can generate a new theme on-the-fly.",
       "targets": [
         "claude"
       ]
@@ -9712,6 +10037,19 @@
       ]
     },
     {
+      "slug": "twitter-algorithm-optimizer",
+      "name": "twitter-algorithm-optimizer",
+      "repo": "https://github.com/ComposioHQ/awesome-claude-skills.git",
+      "path": "twitter-algorithm-optimizer",
+      "ref": "master",
+      "source": "composiohq",
+      "version": "0.1.0",
+      "description": "Analyze and optimize tweets for maximum reach using Twitter's open-source algorithm insights. Rewrite and edit user tweets to improve engagement and visibility based on how the recommendation system ranks content.",
+      "targets": [
+        "claude"
+      ]
+    },
+    {
       "slug": "twocaptcha-automation",
       "name": "twocaptcha-automation",
       "repo": "https://github.com/ComposioHQ/awesome-claude-skills.git",
@@ -9920,6 +10258,19 @@
       ]
     },
     {
+      "slug": "video-downloader",
+      "name": "youtube-downloader",
+      "repo": "https://github.com/ComposioHQ/awesome-claude-skills.git",
+      "path": "video-downloader",
+      "ref": "master",
+      "source": "composiohq",
+      "version": "0.1.0",
+      "description": "Download YouTube videos with customizable quality and format options. Use this skill when the user asks to download, save, or grab YouTube videos. Supports various quality settings (best, 1080p, 720p, 480p, 360p), multiple formats (mp4, webm, mkv), and audio-only downloads as MP3.",
+      "targets": [
+        "claude"
+      ]
+    },
+    {
       "slug": "virustotal-automation",
       "name": "virustotal-automation",
       "repo": "https://github.com/ComposioHQ/awesome-claude-skills.git",
@@ -10032,6 +10383,19 @@
       "source": "composiohq",
       "version": "0.1.0",
       "description": "Automate Weathermap tasks via Rube MCP (Composio). Always search tools first for current schemas.",
+      "targets": [
+        "claude"
+      ]
+    },
+    {
+      "slug": "webapp-testing",
+      "name": "webapp-testing",
+      "repo": "https://github.com/ComposioHQ/awesome-claude-skills.git",
+      "path": "webapp-testing",
+      "ref": "master",
+      "source": "composiohq",
+      "version": "0.1.0",
+      "description": "Toolkit for interacting with and testing local web applications using Playwright. Supports verifying frontend functionality, debugging UI behavior, capturing browser screenshots, and viewing browser logs.",
       "targets": [
         "claude"
       ]

@@ -1,0 +1,16 @@
+{
+  "sources": [
+    {
+      "id": "composiohq",
+      "repo": "https://github.com/ComposioHQ/awesome-claude-skills.git",
+      "ref": "master",
+      "scan_root": true,
+      "collection_roots": [
+        "composio-skills"
+      ],
+      "targets": [
+        "claude"
+      ]
+    }
+  ]
+}

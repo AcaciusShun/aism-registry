@@ -9,26 +9,33 @@ local file path or a hosted raw GitHub URL.
 
 ```text
 index.json
+sources.json
 scripts/
+  generate_index.py
   generate_composio_index.py
 ```
 
-## Current Source
+## Registry Sources
 
-The initial registry is generated from:
+The registry is generated from `sources.json`.
 
-- upstream repo: `https://github.com/ComposioHQ/awesome-claude-skills.git`
-- upstream ref: `master`
-- upstream root-level skill directories
-- upstream collection roots: `composio-skills/`
+Current configured source:
 
-The generator currently scans:
+- `composiohq`
+  - repo: `https://github.com/ComposioHQ/awesome-claude-skills.git`
+  - ref: `master`
+  - scans root-level skill directories
+  - scans `composio-skills/` as a bundled collection root
 
-- top-level directories that contain `SKILL.md`
-- direct children under `composio-skills/` that contain `SKILL.md`
+The generic generator can merge multiple upstream repositories into one unified
+`index.json`. Each source defines:
 
-This lets the registry include both standalone skills at repository root and
-the larger bundled skill collection under `composio-skills/`.
+- `id`
+- `repo`
+- `ref`
+- `scan_root`
+- `collection_roots`
+- `targets`
 
 ## Curation Rules
 
@@ -42,6 +49,8 @@ the larger bundled skill collection under `composio-skills/`.
 - hidden directories are skipped
 - normalized slug collisions prefer the already hyphenated folder over an
   underscore variant
+- slug collisions across different sources fail the build instead of silently
+  overriding an existing entry
 
 This keeps the registry stable even when upstream monorepos contain mixed naming
 styles such as `google-admin-automation` and `google_admin-automation`.
@@ -73,19 +82,43 @@ styles such as `google-admin-automation` and `google_admin-automation`.
 From this repository root:
 
 ```bash
-python3 scripts/generate_composio_index.py
+python3 scripts/generate_index.py
 ```
 
 Useful overrides:
 
 ```bash
-python3 scripts/generate_composio_index.py --output /tmp/index.json
-python3 scripts/generate_composio_index.py --repo-url https://github.com/ComposioHQ/awesome-claude-skills.git --ref master
-python3 scripts/generate_composio_index.py --collection-root composio-skills
+python3 scripts/generate_index.py --output /tmp/index.json
+python3 scripts/generate_index.py --config ./sources.json
+python3 scripts/generate_index.py --source composiohq
 ```
 
 The script performs a temporary shallow clone of the upstream repository and
 rewrites `index.json` deterministically.
+
+`scripts/generate_composio_index.py` is kept as a compatibility wrapper for the
+current Composio source.
+
+## Add Another Upstream Source
+
+Append another source object to `sources.json`, for example:
+
+```json
+{
+  "id": "anthropics",
+  "repo": "https://github.com/anthropics/skills.git",
+  "ref": "main",
+  "scan_root": false,
+  "collection_roots": ["skills"],
+  "targets": ["claude", "codex", "gemini"]
+}
+```
+
+Then regenerate:
+
+```bash
+python3 scripts/generate_index.py
+```
 
 ## Automatic Refresh
 
